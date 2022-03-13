@@ -24,10 +24,10 @@ COPY . .
 # We copy our files (files from .dockerignore are ignored)
 # to the WORKDIR
 
+# OK, now we pip install our requirements
+
 RUN pip install --no-cache-dir -r requirements.txt
 RUN poetry install
-
-# OK, now we pip install our requirements
 
 EXPOSE 80
 
@@ -35,4 +35,4 @@ EXPOSE 80
 
 WORKDIR /build/sentinel
 
-CMD python -m uvicorn sentinel.api:app --host 0.0.0.0 --port 80 --reload
+CMD poetry run uvicorn sentinel.api:app --host 0.0.0.0 --port 80
