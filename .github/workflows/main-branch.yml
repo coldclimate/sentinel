@@ -1,7 +1,7 @@
 # runs on feature branch pushes, runs fast unit and integration tests
 name: feature_push_test
 on:
-  pr:
+  pull_request:
     branches:
       - 'main'
 jobs:
