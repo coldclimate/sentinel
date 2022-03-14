@@ -5,7 +5,7 @@ on:
     branches:
       - 'feat-*'
 jobs:
-  build_test_deploy:
+  build_test:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
@@ -22,3 +22,7 @@ jobs:
       run: poetry run coverage run -m pytest tests/test_unit.py
     - name: check coverage
       run: poetry run coverage report --fail-under 90
+    - name: Launch local copy
+      run: poetry uvicorn sentinel.api:app --host 0.0.0.0 --port 8000
+    - name: run integration tests
+      run: poetry run pytest tests/test_integration.py
