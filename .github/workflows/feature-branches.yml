@@ -5,7 +5,7 @@ on:
     branches:
       - 'feat-*'
 jobs:
-  build_test_deploy:
+  build_test:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
