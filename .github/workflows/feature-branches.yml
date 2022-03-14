@@ -22,3 +22,7 @@ jobs:
       run: poetry run coverage run -m pytest tests/test_unit.py
     - name: check coverage
       run: poetry run coverage report --fail-under 90
+    - name: Launch local copy
+      run: poetry uvicorn sentinel.api:app --host 0.0.0.0 --port 8000
+    - name: run integration tests
+      run: poetry run pytest tests/test_integration.py
